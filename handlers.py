@@ -264,9 +264,12 @@ async def on_task_action(cb: CallbackQuery):
             status, task = storage.start_task(data, user_id, task_id)
         elif action == "c":
             status, task = storage.complete_task(data, user_id, task_id)
+        elif action == "u":
+            task = storage.find_task_by_id(data, user_id, task_id)
+            status = "ok" if task else "not_found"
         else:
             status, task = "not_found", None
-        if status == "ok":
+        if status == "ok" and action != "u":
             storage.save_data(data)
         today_tasks = storage.get_today_tasks(data, user_id)
 

@@ -30,7 +30,8 @@ def running_card_keyboard(task_id: str):
     kb = InlineKeyboardBuilder()
     kb.button(text="⏸ Пауза", callback_data=f"t:p:k:{task_id}")
     kb.button(text="✅ Завершить", callback_data=f"t:c:k:{task_id}")
-    kb.adjust(2)
+    kb.button(text="🔄 Обновить", callback_data=f"t:u:k:{task_id}")
+    kb.adjust(2, 1)
     return kb.as_markup()
 
 
