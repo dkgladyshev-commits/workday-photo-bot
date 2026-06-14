@@ -14,9 +14,9 @@ async def main():
     load_dotenv()
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     if not token:
-        available = [k for k in os.environ if "TOKEN" in k or "TELEGRAM" in k]
+        all_keys = sorted(os.environ.keys())
         raise RuntimeError(
-            f"TELEGRAM_BOT_TOKEN не задан. Переменные с TOKEN/TELEGRAM: {available}"
+            f"TELEGRAM_BOT_TOKEN не задан. Все переменные: {all_keys}"
         )
 
     logging.basicConfig(
